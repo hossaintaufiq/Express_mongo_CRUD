@@ -1,12 +1,26 @@
 import express from "express";
 import mongoose from "mongoose";
-// import Product from "./models/productModel.js";
 import Product from "./model/productModel.js";
 
+
+
+// middlewares 
 const app = express();
 app.use(express.json());
-// const PORT = process.env.PORT || 3000;
 const MONGO_URL = process.env.MONGO_URL;
+
+
+// routes 
+
+app.use('/api/products',productRoute)
+
+
+
+
+
+
+
+
 app.get("/api/products", async (req, res) => {
     try{
         const products=await Product.find();
